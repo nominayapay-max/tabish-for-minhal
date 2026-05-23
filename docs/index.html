@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tabish For Minhal ❤️</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#ffb6d9,#ff69b4);
+overflow:hidden;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+text-align:center;
+}
+
+.page{
+display:none;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+padding:20px;
+animation:fade 1s ease;
+}
+
+.active{
+display:flex;
+}
+
+@keyframes fade{
+from{opacity:0;transform:scale(0.9);}
+to{opacity:1;transform:scale(1);}
+}
+
+h1{
+font-size:40px;
+margin-bottom:15px;
+text-shadow:0 0 10px rgba(255,255,255,0.8);
+}
+
+p{
+font-size:20px;
+margin:10px 0;
+}
+
+button{
+padding:14px 28px;
+border:none;
+border-radius:40px;
+background:white;
+color:#ff1493;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+margin-top:20px;
+box-shadow:0 0 20px rgba(255,255,255,0.8);
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.1);
+}
+
+.progress-box{
+width:300px;
+height:30px;
+background:white;
+border-radius:20px;
+overflow:hidden;
+margin-top:20px;
+}
+
+.progress{
+height:100%;
+width:0%;
+background:#ff1493;
+transition:0.2s;
+}
+
+.message-box{
+background:rgba(255,255,255,0.2);
+padding:20px;
+border-radius:20px;
+margin:10px;
+backdrop-filter:blur(5px);
+font-size:22px;
+}
+
+.card{
+background:white;
+color:#ff1493;
+padding:25px;
+border-radius:25px;
+max-width:600px;
+line-height:1.8;
+font-size:20px;
+box-shadow:0 0 20px rgba(255,255,255,0.7);
+}
+
+.floating{
+position:absolute;
+font-size:25px;
+animation:float 10s linear infinite;
+}
+
+@keyframes float{
+0%{
+transform:translateY(100vh);
+opacity:0;
+}
+50%{
+opacity:1;
+}
+100%{
+transform:translateY(-120vh);
+opacity:0;
+}
+}
+
+img{
+width:220px;
+border-radius:20px;
+margin-bottom:20px;
+box-shadow:0 0 20px rgba(255,255,255,0.8);
+}
+</style>
+</head>
+
+<body>
+
+<!-- Floating Emojis -->
+<script>
+const emojis=["🦈","♥️","🫰🏻","🦜","👀"];
+
+for(let i=0;i<25;i++){
+let span=document.createElement("span");
+span.className="floating";
+span.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+span.style.left=Math.random()*100+"vw";
+span.style.animationDuration=(5+Math.random()*5)+"s";
+span.style.fontSize=(20+Math.random()*20)+"px";
+document.body.appendChild(span);
+}
+</script>
+
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+<img src="https://media.tenor.com/Z6gmDPeM6dgAAAAC/shark.gif">
+<h1>Hey Minhal</h1>
+<p>Hey my baby Shark 🦈</p>
+<button onclick="nextPage(2)">Click Here</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+<h1>See How Much I love you ❤️</h1>
+
+<div class="progress-box">
+<div class="progress" id="progress"></div>
+</div>
+
+<p id="percent">0%</p>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="page3">
+<h1>Error: Its infinite 👀</h1>
+<button onclick="nextPage(4)">Continue</button>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page" id="page4">
+<div class="message-box">
+"My timeless antique begam."
+</div>
+
+<div class="message-box">
+"Vintage soul, endless love."
+</div>
+
+<div class="message-box">
+"Priceless queen, forever mine."
+</div>
+
+<button onclick="nextPage(5)">Next ❤️</button>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page" id="page5">
+<h1>Special Surprise 🎁</h1>
+<button onclick="nextPage(6)">
+Click here to check your value
+</button>
+</div>
+
+<!-- PAGE 6 -->
+<div class="page" id="page6">
+<div class="card">
+My dearest begam, your love feels like a rare antique , timeless, precious, and impossible to replace 🫠 Every moment with you carries the charm of an old masterpiece, elegant and unforgettable. Your smile brings peace to my restless heart, and your presence turns ordinary days into beautiful memories 🫰🏻😘😘. In this temporary world, you are my forever treasure, my vintage love story written with loyalty, warmth, and endless affection. I the love youuu 😘😘🦈
+</div>
+</div>
+
+<!-- MUSIC -->
+<audio autoplay loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=beautiful-piano-113997.mp3" type="audio/mp3">
+</audio>
+
+<script>
+
+function nextPage(page){
+document.querySelectorAll(".page").forEach(p=>{
+p.classList.remove("active");
+});
+
+document.getElementById("page"+page).classList.add("active");
+
+if(page===2){
+startProgress();
+}
+}
+
+function startProgress(){
+let progress=document.getElementById("progress");
+let percent=document.getElementById("percent");
+
+let count=0;
+
+let interval=setInterval(()=>{
+count++;
+
+progress.style.width=count+"%";
+percent.innerHTML=count+"%";
+
+if(count>=120){
+clearInterval(interval);
+
+setTimeout(()=>{
+nextPage(3);
+},800);
+}
+
+},40);
+}
+
+</script>
+
+</body>
+</html>
